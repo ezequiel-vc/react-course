@@ -1,11 +1,48 @@
 import React from 'react'
 import reactDom from 'react-dom'
-import Message from './test'
+import Table from './cockpit-matrix.component'
+
+
+var items = [
+  {
+    rv: 325,
+    item: 236,
+    productType: "Aéreo",
+    requester: "Lourenzo Viana",
+    date: new Date(),
+    traveller: ["Diego Murakami", "Thiago Graf"],
+    approver: ["Aldo Caterina"],
+    status: "aberto",
+    expirationDate: new Date('2021-08-18T11:24:00'),
+  },
+  {
+    rv: 325,
+    item: 236,
+    productType: "Aéreo",
+    requester: "Lourenzo Viana",
+    date: new Date(),
+    traveller: ["Diego Murakami", "Thiago Graf"],
+    approver: ["Aldo Caterina"],
+    status: "cotacao",
+    expirationDate: new Date('2021-08-18T10:24:00'),
+  },
+  {
+    rv: 325,
+    item: 236,
+    productType: "Aéreo",
+    requester: "Lourenzo Viana",
+    date: new Date(),
+    traveller: ["Diego Murakami", "Thiago Graf"],
+    approver: ["Aldo Caterina"],
+    status: "opcao",
+    expirationDate: new Date('2021-08-18T08:24:00'),
+  },
+];
 
 function BookList() {
   return (
     <section>
-      <Message />
+      <Table tableItems={items} />
     </section>
   )
 }

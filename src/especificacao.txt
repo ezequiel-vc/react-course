@@ -1,0 +1,61 @@
+App
+    cockpit-matrix.component.jsx
+        props (items)
+
+
+
+
+
+function filterstatus (list) {
+  const matriz = {}
+  for(let i = 0; i < status.length; i++){
+    var theStatus = status[i];
+    matriz[theStatus] = list.filter((item) => item.status === theStatus);
+  }
+  return matriz;
+}
+
+function Row(props) {
+  return (
+    <tr>
+      <th className="row">{props.teste[1]["hour>-3"]}</th>
+      <th className="row">{props.teste[1]["hour-3"]}</th>
+      <th className="row">{props.teste[1]["hour-2"]}</th>
+      <th className="row">{props.teste[1]["hour-1"]}</th>
+      <th className="row">{props.teste[1]["hour0"]}</th>
+      <th className="row">{props.teste[1]["hour1"]}</th>
+      <th className="row">{props.teste[1]["hour2"]}</th>
+      <th className="row">{props.teste[1]["hour3"]}</th>
+      <th className="row">{props.teste[1]["hour>3"]}</th>
+      <th className="nTotal">{props.teste[0]}</th>
+    </tr>
+  );
+}
+
+function Header() {
+  return (
+    <thead>
+      <tr className="header">
+        <th className="hour first">{"<-3"}</th>
+        <th className="hour">-3</th>
+        <th className="hour">-2</th>
+        <th className="hour">-1</th>
+        <th className="hour">0</th>
+        <th className="hour">1</th>
+        <th className="hour">2</th>
+        <th className="hour">3</th>
+        <th className="hour last">{">3"}</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+  );
+}
+
+
+
+
+
+
+            <Row status={priority(this.props.matriz)}></Row>
+            <Row teste={Priority(this.matriz.cotacao)}></Row>
+            <Row teste={Priority(this.matriz.opcao)}></Row>
