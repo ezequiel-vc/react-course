@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.table {
+  display: flex;
+}
+table {
+  border-collapse: separete;
+  border-spacing: 0 5px;
+}
+.side-table {
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 15px;
+}
+
+h3 {
+  color: rgb(78, 167, 43);
+  text-align: right;
+}
+
+.rows-title {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background-color: rgb(224, 224, 224);
+  padding: 10px;
+  border-radius: 10px;
+  flex-grow: 2;
+}
+
+.header .hour {
+  background-color: rgb(224, 224, 224);
+  width: 30px;
+  padding: 0 5px;
+}
+
+.header .first {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.header .last {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.nTotal {
+  background-color: rgba(195, 247, 136, 0.568);
+  border-radius: 10px;
+  width: 15px;
+}
+
+.row {
+  border-bottom: 1px solid rgba(117, 112, 112, 0.164);
+}
