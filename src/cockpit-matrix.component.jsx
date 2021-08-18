@@ -1,5 +1,4 @@
 import React from "react";
-import priority from "./matriz";
 import "./cockpit-matrix.component.css";
 
 const status = [
@@ -56,7 +55,7 @@ class Table extends React.Component {
         <table>
           <this.Header />
           <tbody>
-            {statusKeys.map((status) => <this.Row statusAtr={priority(this.state.matriz[status[0]])}></this.Row>)}
+            {statusKeys.map((status) => <this.Row statusAtr={this.priority(this.state.matriz[status[0]])}></this.Row>)}
           </tbody>
         </table>
       </div>
@@ -89,6 +88,50 @@ class Table extends React.Component {
         </tr>
       </thead>
     );
+  }
+
+  priority(arr) {
+    const total = arr.length
+    const status = this.byHour(arr)
+    return [total, status]
+  }
+
+  byHour(arr) {
+    let qtd = {
+      'hour>-3': 0,
+      'hour-3': 0,
+      'hour-2': 0,
+      'hour-1': 0,
+      hour0: 0,
+      hour1: 0,
+      hour2: 0,
+      hour3: 0,
+      'hour>3': 0,
+    }
+    let curHour = new Date()
+    for (let i = 0; i < arr.length; i++) {
+      let timeDference = ((curHour - arr[i].expirationDate) / (1000 * 60 * 60)) % 24
+      if (timeDference > -1 && timeDference < 0) {
+        qtd['hour0']++
+      } else if (timeDference > -2 && timeDference < -1) {
+        qtd['hour1']++
+      } else if (timeDference > -3 && timeDference < -2) {
+        qtd['hour2']++
+      } else if (timeDference > -4 && timeDference < -3) {
+        qtd['hour3']++
+      } else if (timeDference < -3) {
+        qtd['hour>3']++
+      } else if (timeDference < 2 && timeDference > 1) {
+        qtd['hour-1']++
+      } else if (timeDference < 3 && timeDference > 2) {
+        qtd['hour-2']++
+      } else if (timeDference < 4 && timeDference > 3) {
+        qtd['hour-3']++
+      } else if (timeDference > 3) {
+        qtd['hour>-3']++
+      }
+    }
+    return qtd
   }
 
   Row(props) {
