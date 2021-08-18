@@ -92,8 +92,8 @@ class Table extends React.Component {
 
   priority(arr) {
     const total = arr.length
-    const status = this.byHour(arr)
-    return [total, status]
+    const sortedHour = this.byHour(arr)
+    return [total, sortedHour]
   }
 
   byHour(arr) {
