@@ -16,7 +16,7 @@ const Row = (props) => {
   };
 
   const byHour = (arr) => {
-    let qtdExpirationHour = {
+    let qtdExpireHour = {
       "hour>-3": 0,
       "hour-3": 0,
       "hour-2": 0,
@@ -29,29 +29,28 @@ const Row = (props) => {
     };
     let curHour = new Date();
     for (let i = 0; i < arr.length; i++) {
-      let timeDference =
-        ((curHour - arr[i].expirationDate) / (1000 * 60 * 60)) % 24;
+      let timeDference = (curHour - arr[i].expirationDate) / (1000 * 60 * 60);
       if (timeDference > -1 && timeDference < 0) {
-        qtdExpirationHour["hour0"]++;
+        qtdExpireHour["hour0"]++;
       } else if (timeDference > -2 && timeDference < -1) {
-        qtdExpirationHour["hour1"]++;
+        qtdExpireHour["hour1"]++;
       } else if (timeDference > -3 && timeDference < -2) {
-        qtdExpirationHour["hour2"]++;
+        qtdExpireHour["hour2"]++;
       } else if (timeDference > -4 && timeDference < -3) {
-        qtdExpirationHour["hour3"]++;
+        qtdExpireHour["hour3"]++;
       } else if (timeDference < -3) {
-        qtdExpirationHour["hour>3"]++;
+        qtdExpireHour["hour>3"]++;
       } else if (timeDference < 2 && timeDference > 1) {
-        qtdExpirationHour["hour-1"]++;
+        qtdExpireHour["hour-1"]++;
       } else if (timeDference < 3 && timeDference > 2) {
-        qtdExpirationHour["hour-2"]++;
+        qtdExpireHour["hour-2"]++;
       } else if (timeDference < 4 && timeDference > 3) {
-        qtdExpirationHour["hour-3"]++;
+        qtdExpireHour["hour-3"]++;
       } else if (timeDference > 3) {
-        qtdExpirationHour["hour>-3"]++;
+        qtdExpireHour["hour>-3"]++;
       }
     }
-    return qtdExpirationHour;
+    return qtdExpireHour;
   };
 
   const priority = (arr) => {
@@ -60,8 +59,9 @@ const Row = (props) => {
     return { total, ...sortedHour };
   };
 
+  let sortedByStatus = filterByStatus();
+
   let rowData = statusList.map((status) => {
-    let sortedByStatus = filterByStatus();
     return priority(sortedByStatus[status.id]);
   });
 
